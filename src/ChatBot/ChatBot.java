@@ -19,5 +19,13 @@ public class ChatBot {
         int num2 = scanner2.nextInt();
         int num3 = scanner2.nextInt();
         System.out.println("Your age is "+ ((num1*70+num2*21+num3*15)%105) + "; that`s a good time to start proggraming");
+
+        Scanner scanner3 = new Scanner(System.in);
+        System.out.println("Now I will prove to you that I can count to any number you want!");
+        int userInput = scanner3.nextInt();
+        for(int i = 0; i<=userInput; i++)
+            System.out.println(i + "!");
+
+
     }
 }

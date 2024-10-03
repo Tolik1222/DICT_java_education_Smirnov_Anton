@@ -9,9 +9,11 @@ public class Hangman {
         Random random = new Random();
         String word = words[random.nextInt(words.length)];
 
-        Scanner scanner = new Scanner(System.in);
+        String hint = word.substring(0, 2) + "-".repeat(word.length() - 2);
         System.out.println("HANGMAN");
-        System.out.print("Guess the word: ");
+        System.out.println("Guess the word: " + hint);
+
+        Scanner scanner = new Scanner(System.in);
         String guess = scanner.nextLine();
 
         if (guess.equals(word)) {
@@ -21,3 +23,4 @@ public class Hangman {
         }
     }
 }
+

@@ -6,6 +6,23 @@ import java.util.Scanner;
 
 public class Hangman {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("HANGMAN");
+            System.out.println("Type 'play' to play the game, 'exit' to quit: ");
+            String input = scanner.nextLine();
+
+            if (input.equals("play")) {
+                playGame(scanner);
+            } else if (input.equals("exit")) {
+                break;
+            } else {
+                System.out.println("Invalid option. Please type 'play' or 'exit'.");
+            }
+        }
+    }
+
+    public static void playGame(Scanner scanner) {
         String[] words = {"python", "java", "javascript", "kotlin"};
         Random random = new Random();
         String word = words[random.nextInt(words.length)];
@@ -15,12 +32,11 @@ public class Hangman {
             hiddenWord[i] = '-';
         }
 
-        int attempts = 8;
         HashSet<Character> guessedLetters = new HashSet<>();
-        Scanner scanner = new Scanner(System.in);
+        int attempts = 8;
 
         while (attempts > 0 && new String(hiddenWord).contains("-")) {
-            System.out.println(hiddenWord);
+            System.out.println("Word: " + new String(hiddenWord));
             System.out.println("Input a letter: ");
             String guessInput = scanner.nextLine();
 

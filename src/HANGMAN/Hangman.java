@@ -1,5 +1,6 @@
 package HANGMAN;
 
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,12 +16,32 @@ public class Hangman {
         }
 
         int attempts = 8;
+        HashSet<Character> guessedLetters = new HashSet<>();
         Scanner scanner = new Scanner(System.in);
 
         while (attempts > 0 && new String(hiddenWord).contains("-")) {
             System.out.println(hiddenWord);
             System.out.println("Input a letter: ");
-            char guess = scanner.next().charAt(0);
+            String guessInput = scanner.nextLine();
+
+            if (guessInput.length() != 1) {
+                System.out.println("You should input a single letter.");
+                continue;
+            }
+
+            char guess = guessInput.charAt(0);
+
+            if (!Character.isLowerCase(guess)) {
+                System.out.println("Please enter a lowercase English letter.");
+                continue;
+            }
+
+            if (guessedLetters.contains(guess)) {
+                System.out.println("You've already guessed this letter.");
+                continue;
+            }
+
+            guessedLetters.add(guess);
 
             if (word.indexOf(guess) >= 0) {
                 for (int i = 0; i < word.length(); i++) {
@@ -37,10 +58,10 @@ public class Hangman {
         }
 
         if (!new String(hiddenWord).contains("-")) {
+            System.out.println("You guessed the word " + word + "!");
             System.out.println("You survived!");
         } else {
             System.out.println("You lost! The word was: " + word);
         }
     }
 }
-

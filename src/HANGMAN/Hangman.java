@@ -32,12 +32,14 @@ public class Hangman {
                 System.out.println("That letter doesn't appear in the word.");
                 attempts--;
             }
+
+            System.out.println("Attempts left: " + attempts);
         }
 
         if (!new String(hiddenWord).contains("-")) {
             System.out.println("You survived!");
         } else {
-            System.out.println("You lost!");
+            System.out.println("You lost! The word was: " + word);
         }
     }
 }

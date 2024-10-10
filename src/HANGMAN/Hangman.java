@@ -1,4 +1,4 @@
-package HANGMAN;
+package Hangman;
 
 import java.util.HashSet;
 import java.util.Random;
